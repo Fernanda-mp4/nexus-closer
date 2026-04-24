@@ -177,7 +177,7 @@ class Api:
                     f"{json.dumps(n['tipo'])},"
                     f"{json.dumps(n['titulo'])},"
                     f"{json.dumps(n['mensagem'])},"
-                    f"{n['id']})"
+                    f"{json.dumps(n['id'])})"
                 )
         except Exception as exc:
             _logger.error("carregar_notificacoes_pendentes: %s", exc)

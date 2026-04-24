@@ -2083,13 +2083,16 @@ function _showPdfLoading(dados) {
   overlay.innerHTML = `
     <div class="pdf-load-card">
       <div class="pdf-load-top">NEXUS CLOSER // PDF ENGINE</div>
-      <div class="pdf-load-title">${tipo}</div>
-      <div class="pdf-load-meta">${data} &nbsp;·&nbsp; ${hora}</div>
-      <div class="pdf-load-meta">Pipeline: ${s.total||0} leads &nbsp;·&nbsp; Crítico: ${s.critico||0}</div>
+      <div class="pdf-load-title" id="pdf-load-tipo"></div>
+      <div class="pdf-load-meta" id="pdf-load-meta1"></div>
+      <div class="pdf-load-meta" id="pdf-load-meta2"></div>
       <div class="pdf-load-bar"><span class="pdf-load-fill" id="pdf-load-fill"></span></div>
       <div class="pdf-load-status" id="pdf-load-status">[*] Compilando relatório...</div>
       <div class="pdf-load-hint">&gt;&gt;&gt; Aguarde. Abrirá automaticamente.</div>
     </div>`;
+  overlay.querySelector('#pdf-load-tipo').textContent = tipo;
+  overlay.querySelector('#pdf-load-meta1').textContent = data + ' · ' + hora;
+  overlay.querySelector('#pdf-load-meta2').textContent = 'Pipeline: ' + (s.total||0) + ' leads  ·  Crítico: ' + (s.critico||0);
   document.body.appendChild(overlay);
   // Simula progresso visual enquanto aguarda
   let pct = 0;
