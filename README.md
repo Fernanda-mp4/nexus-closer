@@ -95,27 +95,13 @@ nexus-closer/
 
 ---
 
-## Como Rodar Localmente
+## Acesso e Demonstração
 
-**Pré-requisitos:** Python 3.11+
+Este é um software proprietário. O código-fonte está disponível neste repositório exclusivamente para auditoria técnica e avaliação de competência em engenharia de software.
 
-```bash
-# Clonar e configurar ambiente
-git clone <repositório>
-cd nexus-closer
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
+O guia de setup local é omitido por design: o sistema depende de integrações críticas com infraestrutura comercial em produção, e a exposição do procedimento de configuração não agrega valor técnico à leitura do código.
 
-# Configurar variáveis de ambiente
-# Criar .env na raiz com: CLICKUP_TOKEN, CLICKUP_LIST_PIPELINE_ID,
-# CLICKUP_LIST_CONTRATOS_ID, BOTCONVERSA_API_KEY, BOTCONVERSA_BASE_URL
-
-# Iniciar
-python main_web.py
-```
-
-**Distribuição:** `pyinstaller main_web.py --onefile` gera o executável final para entrega ao usuário.
+Para visualizar o sistema em operação ou solicitar uma análise aprofundada da arquitetura, entre em contato via [LinkedIn](https://linkedin.com/in/fernanda-mp4) ou abra uma Discussion neste repositório.
 
 ---
 
