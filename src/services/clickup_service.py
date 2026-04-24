@@ -26,18 +26,18 @@ from rich.text import Text
 from src.models import Tarefa
 
 # ------------------------------------------------------------------
-# Mapeamento de IDs dos Custom Fields (fonte: CLAUDE.md seção 5.2)
+# Mapeamento de IDs dos Custom Fields — carregados do .env
 # ------------------------------------------------------------------
 _CAMPOS = {
-    "faturamento_bruto":   "c4e95425-4611-4532-9f10-525172fad73d",
-    "faturamento_liquido": "337ceae7-7359-433b-ad1c-89d80d107366",
-    "comissao":            "94f33416-d0b9-41f0-967c-3882ed709c7a",
-    "valor_orcamento":     "93862e1c-9030-4ab3-9d29-df999b85542e",
-    "estagio_lead":        "55d94797-3339-435c-a0a7-95df39788f91",
-    "plano":               "d074fb60-b88f-443d-8625-704a97e08060",
-    "objecao":             "8bcd0e0f-104f-483e-ae04-e6e2311ef7b3",
-    "whatsapp":            "aaf5cfad-87a2-428a-9bc2-1a9895518e5a",
-    "etapa_followup":      "120f2506-d4bc-4e64-bba3-3ea4aea67829",
+    "faturamento_bruto":   os.getenv("CLICKUP_FIELD_FATURAMENTO_BRUTO", ""),
+    "faturamento_liquido": os.getenv("CLICKUP_FIELD_FATURAMENTO_LIQUIDO", ""),
+    "comissao":            os.getenv("CLICKUP_FIELD_COMISSAO", ""),
+    "valor_orcamento":     os.getenv("CLICKUP_FIELD_VALOR_ORCAMENTO", ""),
+    "estagio_lead":        os.getenv("CLICKUP_FIELD_ESTAGIO_LEAD", ""),
+    "plano":               os.getenv("CLICKUP_FIELD_PLANO", ""),
+    "objecao":             os.getenv("CLICKUP_FIELD_OBJECAO", ""),
+    "whatsapp":            os.getenv("CLICKUP_FIELD_WHATSAPP", ""),
+    "etapa_followup":      os.getenv("CLICKUP_FIELD_ETAPA_FOLLOWUP", ""),
 }
 
 load_dotenv()

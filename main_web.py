@@ -323,27 +323,6 @@ class Api:
             self._log(f"[ERR] sincronizar_radar: {exc}")
             return []
 
-    def debug_campos_clickup(self) -> dict:
-        """Debug: retorna custom_fields da primeira task do pipeline para verificar IDs."""
-        try:
-            clickup = ClickUpService()
-            dados = clickup._get(f"/list/{clickup.lista_pipeline_id}/task", params={"page": 0, "limit": 1})
-            tasks = dados.get("tasks", [])
-            if not tasks:
-                return {"erro": "Nenhuma task encontrada"}
-            task = tasks[0]
-            campos = [
-                {"id": c.get("id"), "name": c.get("name"), "value": c.get("value")}
-                for c in task.get("custom_fields", [])
-            ]
-            return {
-                "task_nome": task.get("name"),
-                "task_status": task.get("status", {}).get("status"),
-                "custom_fields": campos,
-            }
-        except Exception as exc:
-            return {"erro": str(exc)}
-
     def auditar_pipeline(self, forcado: bool = False) -> dict:
         """
         Sincroniza o ClickUp (full sync) e audita estágios de todas as leads ativas.
