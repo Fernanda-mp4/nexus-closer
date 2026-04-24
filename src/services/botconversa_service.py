@@ -35,6 +35,9 @@ _BASE_URL = os.getenv("BOTCONVERSA_BASE_URL", "https://api.botconversa.com.br/ap
 _API_KEY = os.getenv("BOTCONVERSA_API_KEY", "")
 _TIMEOUT = 15.0  # segundos
 
+if not _API_KEY:
+    logger.warning("BOTCONVERSA_API_KEY não configurada — worker operará em modo simulado.")
+
 # Intervalo de verificação de follow-ups pendentes (em segundos)
 _INTERVALO_VERIFICACAO = 300  # 5 minutos
 

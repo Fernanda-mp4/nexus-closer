@@ -1420,6 +1420,9 @@ document.getElementById('btn-pdf').addEventListener('click', async () => {
     );
     if (r.status === 'template_pendente') {
       termLog('[WARN] PDF: template Canva ainda não configurado em assets/template_proposta.pdf');
+    } else if (r.status === 'alerta') {
+      mostrarAviso('ALERTA DE QUALIDADE', r.mensagem);
+      termLog('[ALERTA] PDF bloqueado: ' + r.mensagem);
     } else if (r.status === 'ok') {
       termLog(`[OK] PDF GERADO: ${r.caminho}`);
     } else {

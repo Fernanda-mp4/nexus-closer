@@ -7,6 +7,7 @@ BotConversaWorker roda em thread separada (asyncio).
 import asyncio
 import json
 import logging
+import re
 import threading
 from datetime import date, timedelta
 from datetime import datetime, timezone
@@ -234,6 +235,28 @@ class Api:
                 # {"page": 0, "x": 100, "y": 200, "texto": f"{titulo} {nome_lead}",
                 #  "fontsize": 14, "cor": (0, 0, 0)}
             ]
+
+            # Validação M-3: prefixo Dr./Dra. não deve estar no nome do ClickUp
+            if re.search(r'\bDr\.\s|\bDra\.\s', nome_lead, re.IGNORECASE):
+                return {
+                    "status": "alerta",
+                    "mensagem": (
+                        "O nome da lead contém 'Dr.' ou 'Dra.'. "
+                        "Remova o prefixo no ClickUp — o sistema insere automaticamente na proposta."
+                    ),
+                }
+
+            # Validação M-3: caracteres inválidos no nome de arquivo Windows
+            _CHARS_INVALIDOS = r'[<>:"/\\|?*]'
+            if re.search(_CHARS_INVALIDOS, nome_lead):
+                chars = set(re.findall(_CHARS_INVALIDOS, nome_lead))
+                return {
+                    "status": "alerta",
+                    "mensagem": (
+                        f"O nome da lead contém caracteres inválidos: {' '.join(sorted(chars))}. "
+                        "Corrija o nome no ClickUp antes de gerar a proposta."
+                    ),
+                }
 
             _saida.mkdir(parents=True, exist_ok=True)
             hoje = date.today().strftime("%d.%m.%Y")

@@ -86,7 +86,7 @@ ipython_config.py
 .abstra/
 __marimo__/
 
-# --- CLAUDE CODE (nada do Claude vai para o repositório) ---
+# --- rs ---
 .claude/
 .claude*/
 CLAUDE.md
@@ -111,11 +111,6 @@ anthropic.log
 docs/
 docs/_build/
 
-# --- PASTAS LOCAIS SEM CONTEÚDO RELEVANTE ---
-atas/
-notas/
-downloads/
-"Nova pasta"/
 
 # --- OUTPUTS GERADOS E SEGREDOS ---
 propostas/

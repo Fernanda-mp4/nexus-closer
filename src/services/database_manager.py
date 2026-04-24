@@ -196,8 +196,8 @@ def _abrir_conexao() -> sqlite3.Connection:
     ]:
         try:
             conn.execute(f"ALTER TABLE pulse_reports ADD COLUMN {col} {ddl}")
-        except Exception:
-            pass  # coluna já existe
+        except sqlite3.OperationalError:
+            pass  # coluna já existe — comportamento esperado na migração
 
     # Tabela de variáveis de negócio — sem hardcode de percentuais no código
     conn.execute("""
