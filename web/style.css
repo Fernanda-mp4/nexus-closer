@@ -518,6 +518,135 @@ body::after {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   [!] ALERTAS DE QUALIDADE
+═══════════════════════════════════════════════════════════════ */
+.alertas-qualidade-panel {
+  margin-top: 10px;
+  border: 1px solid #FFAA00;
+  box-shadow: 0 0 10px rgba(255,170,0,0.35), inset 0 0 20px rgba(255,170,0,0.04);
+  background: rgba(0,20,0,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 12px 12px;
+  clip-path: polygon(
+    0 0, calc(100% - 10px) 0, 100% 10px,
+    100% 100%, 8px 100%, 0 calc(100% - 8px)
+  );
+}
+
+.alertas-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,170,0,0.3);
+}
+
+.alertas-title {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: #FFAA00;
+  text-shadow: 0 0 8px rgba(255,170,0,0.7);
+  letter-spacing: 0.05em;
+}
+
+.alertas-count {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: #000;
+  background: #FFAA00;
+  padding: 2px 6px;
+  clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+}
+
+.alertas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Card individual de alerta */
+.alerta-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(255,170,0,0.04);
+  border: 1px solid rgba(255,170,0,0.4);
+  clip-path: polygon(
+    0 0, calc(100% - 6px) 0, 100% 6px,
+    100% 100%, 6px 100%, 0 calc(100% - 6px)
+  );
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  cursor: default;
+}
+
+.alerta-card:hover {
+  box-shadow: 0 0 14px rgba(255,170,0,0.45);
+  transform: translateY(-1px);
+}
+
+.alerta-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.alerta-card-nome {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: #FFAA00;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alerta-card-msg {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,170,0,0.75);
+  line-height: 1.4;
+}
+
+.alerta-card-tag {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: rgba(255,170,0,0.45);
+  letter-spacing: 0.08em;
+}
+
+.btn-alerta {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: #000;
+  background: #FFAA00;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  white-space: nowrap;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-alerta:hover {
+  background: #ffcc44;
+  box-shadow: 0 0 10px rgba(255,170,0,0.7);
+}
+
+@keyframes alerta-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(255,170,0,0.3), inset 0 0 8px rgba(255,170,0,0.02); }
+  50%       { box-shadow: 0 0 18px rgba(255,170,0,0.65), inset 0 0 12px rgba(255,170,0,0.06); }
+}
+
+.alerta-card.alerta-ativo {
+  animation: alerta-pulse 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    ZONA HUD (direita, 180px)
 ═══════════════════════════════════════════════════════════════ */
 #zone-hud {

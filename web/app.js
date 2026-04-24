@@ -658,6 +658,86 @@ function renderLeads(leads) {
 
   _atualizarMetricas(leads);
   renderRadar(leads);
+  _renderAlertasQualidade(leads);
+}
+
+// ── Alertas de Qualidade ─────────────────────────────────────────────
+const _RE_PREFIX   = /\bDra?\.\s/i;
+const _RE_INVALIDO = /[<>:"/\\|?*]/;
+
+function _renderAlertasQualidade(leads) {
+  const painel  = document.getElementById('alertas-qualidade');
+  const lista   = document.getElementById('alertas-list');
+  const counter = document.getElementById('alertas-count');
+  if (!painel || !lista || !counter) return;
+
+  const alertas = [];
+
+  leads.forEach(l => {
+    const nome = l.nome || '';
+    if (_RE_PREFIX.test(nome)) {
+      alertas.push({
+        lead: l,
+        tag:  'PREFIXO',
+        msg:  "Nome contém 'Dr.' ou 'Dra.' — remova no ClickUp. O sistema insere o prefixo automaticamente na proposta.",
+      });
+    }
+    if (_RE_INVALIDO.test(nome)) {
+      const chars = [...new Set(nome.match(_RE_INVALIDO))].join(' ');
+      alertas.push({
+        lead: l,
+        tag:  'NOME INVALIDO',
+        msg:  `Caracteres inválidos detectados: ${chars} — corrija o nome no ClickUp.`,
+      });
+    }
+  });
+
+  lista.innerHTML = '';
+
+  if (!alertas.length) {
+    painel.hidden = true;
+    return;
+  }
+
+  painel.hidden = false;
+  counter.textContent = alertas.length;
+
+  alertas.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'alerta-card alerta-ativo';
+
+    const body = document.createElement('div');
+    body.className = 'alerta-card-body';
+
+    const nome = document.createElement('div');
+    nome.className = 'alerta-card-nome';
+    nome.textContent = '[!] ' + (a.lead.nome || '—');
+
+    const msg = document.createElement('div');
+    msg.className = 'alerta-card-msg';
+    msg.textContent = a.msg;
+
+    const tag = document.createElement('div');
+    tag.className = 'alerta-card-tag';
+    tag.textContent = '>>> ' + a.tag;
+
+    body.append(nome, msg, tag);
+
+    const btn = document.createElement('button');
+    btn.className = 'btn-alerta';
+    btn.textContent = 'ABRIR NO CLICKUP';
+    btn.addEventListener('click', () => {
+      const taskId = a.lead.clickup_id || a.lead.id;
+      if (taskId) {
+        window.pywebview.api.abrir_url_externa(
+          `https://app.clickup.com/t/${taskId}`
+        );
+      }
+    });
+
+    card.append(body, btn);
+    lista.appendChild(card);
+  });
 }
 
 function _primeiroNomeCard(lead) {

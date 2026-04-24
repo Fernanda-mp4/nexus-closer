@@ -150,6 +150,12 @@ class Api:
         except Exception:
             return ""
 
+    def abrir_url_externa(self, url: str) -> None:
+        """Abre URL no navegador padrão do sistema."""
+        import webbrowser
+        if url.startswith("https://"):
+            webbrowser.open(url)
+
     # ── Notificações ───────────────────────────────────────────────
 
     def resolver_notificacao(self, nid: int) -> None:
