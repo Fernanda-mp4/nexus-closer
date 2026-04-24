@@ -8,23 +8,23 @@ Sistema desktop de automação operacional para times de vendas de alta performa
 
 O problema que o sistema resolve é previsível e custoso: leads qualificadas sendo perdidas não por falta de produto ou preço, mas por lentidão de resposta, follow-up esquecido e proposta gerada com erro.
 
-O Nexus Closer atua como um gerente operacional autônomo, com dois ciclos diários de auditoria (07h e 19h) que varrem todo o pipeline ativo e surfaçam o que precisa de ação imediata — antes que a janela de fechamento feche.
+O Nexus Closer atua como um gerente operacional autônomo, com dois ciclos diários de auditoria (07h e 19h) que varrem todo o pipeline ativo e surfaçam o que precisa de ação imediata antes que a janela de fechamento feche.
 
 **O que muda na operação:**
 
-- **Radar tático em tempo real** — todas as leads ativas visíveis em um único painel, com indicação visual de urgência por tempo parado no estágio. Lead parada em estágio crítico sem resposta aparece em vermelho antes que o closer precise lembrar.
+- **Radar tático em tempo real:** todas as leads ativas visíveis em um único painel, com indicação visual de urgência por tempo parado no estágio. Lead parada em estágio crítico sem resposta aparece em vermelho antes que o closer precise lembrar.
 
-- **Auditoria PULSE** — varredura automática duas vezes ao dia. Leads com dados incompletos, estágios estagnados acima do threshold ou follow-up fora do prazo geram alertas de qualidade antes de virarem perda.
+- **Auditoria PULSE:** varredura automática duas vezes ao dia. Leads com dados incompletos, estágios estagnados acima do threshold ou follow-up fora do prazo geram alertas de qualidade antes de virarem perda.
 
-- **Motor de propostas** — da calculadora de precificação à proposta formatada em PDF: zero digitação manual, zero erro de valor, consistência visual em 100% das propostas geradas.
+- **Motor de propostas:** da calculadora de precificação à proposta formatada em PDF com zero digitação manual, zero erro de valor e consistência visual em 100% das propostas geradas.
 
-- **FSS Score** — métrica individual de 1 a 16 pontos por closer, calculada em tempo real com base em atendimento, uso do pipeline, execução do follow-up e qualidade dos dados. Elimina subjetividade na avaliação de performance.
+- **FSS Score:** métrica individual de 1 a 16 pontos por closer, calculada em tempo real com base em atendimento, uso do pipeline, execução do follow-up e qualidade dos dados. Elimina subjetividade na avaliação de performance.
 
-- **Sequência de follow-up de 60 dias** — plano de contato estruturado com gatilhos nos dias 0, 2, 5, 7, 10, 14, 18, 21, 30, 55, 58 e 60. O sistema rastreia cada lead na sequência e sinaliza o contato do dia automaticamente.
+- **Sequência de follow-up de 60 dias:** plano de contato estruturado com gatilhos nos dias 0, 2, 5, 7, 10, 14, 18, 21, 30, 55, 58 e 60. O sistema rastreia cada lead na sequência e sinaliza o contato do dia automaticamente.
 
 **Segurança operacional**
 
-Dados de leads, propostas e negociações são processados e armazenados localmente, sem passar por servidores de terceiros. As únicas informações que trafegam externamente são as enviadas deliberadamente às integrações da operação (ClickUp e BotConversa). Cada instalação é completamente isolada por configuração — nenhum dado de uma operação é acessível a outra, mesmo rodando sobre a mesma base de código.
+Dados de leads, propostas e negociações são processados e armazenados localmente, sem passar por servidores de terceiros. As únicas informações que trafegam externamente são as enviadas deliberadamente às integrações da operação (ClickUp e BotConversa). Cada instalação é completamente isolada por configuração; nenhum dado de uma operação é acessível a outra, mesmo rodando sobre a mesma base de código.
 
 ---
 
@@ -34,13 +34,13 @@ Dados de leads, propostas e negociações são processados e armazenados localme
 
 | Camada | Tecnologia | Justificativa |
 |--------|-----------|---------------|
-| Interface | pywebview (WebView2) + HTML/CSS/JS | Desktop-first sem Electron — binário leve, sem runtime Node.js |
+| Interface | pywebview (WebView2) + HTML/CSS/JS | Desktop-first sem Electron, binário leve, sem runtime Node.js |
 | Backend | Python 3.11+ com asyncio | Concorrência sem overhead de threading manual |
 | Persistência | SQLite via camada de abstração única | Portabilidade total, zero dependência de servidor |
 | Geração de PDF | PyMuPDF (fitz) | Renderização em camadas sobre template achatado, sem servidor de impressão |
 | Agendamento | APScheduler embutido | Sem dependência de infraestrutura externa para os ciclos PULSE |
 | Integrações | ClickUp API v2 + BotConversa API | ClickUp como fonte canônica; BotConversa como canal de automação |
-| Distribuição | PyInstaller (`--onefile`) | Executável único — sem instalação de dependências pelo usuário final |
+| Distribuição | PyInstaller (`--onefile`) | Executável único, sem instalação de dependências pelo usuário final |
 
 ### Decisões arquiteturais
 
@@ -57,26 +57,26 @@ Toda identidade de cliente é injetada via `client_config.js` em runtime. O cód
 PyMuPDF renderiza sobre templates achatados diretamente na máquina do usuário. Nenhum dado de lead ou proposta comercial trafega para serviços externos de renderização. O arquivo gerado existe localmente até o envio deliberado pelo closer.
 
 **Módulos desacoplados com responsabilidade única**
-`calculator.py` é puro — sem I/O, sem estado. `score.py` não acessa banco. `database_manager.py` é o único ponto de contato com SQLite. Esse isolamento reduz o custo de teste, facilita substituição de componentes e torna o sistema auditável por módulo.
+`calculator.py` é puro: sem I/O, sem estado. `score.py` não acessa banco. `database_manager.py` é o único ponto de contato com SQLite. Esse isolamento reduz o custo de teste, facilita substituição de componentes e torna o sistema auditável por módulo.
 
 ### Segurança
 
-A postura de segurança do sistema é resultado das escolhas arquiteturais acima, não de configuração pontual:
+A postura de segurança do sistema é resultado das escolhas arquiteturais acima, não de configuração pontual.
 
-**Local-first** — o processamento ocorre na máquina do usuário. Dados sensíveis de negociação não transitam por infraestrutura intermediária para nenhuma operação core do sistema.
+**Local-first:** o processamento ocorre na máquina do usuário. Dados sensíveis de negociação não transitam por infraestrutura intermediária para nenhuma operação core do sistema.
 
-**Isolamento de credenciais** — a camada de configuração é separada do código-fonte por design. Rotação de credenciais e auditoria de acesso não exigem alteração de lógica de negócio.
+**Isolamento de credenciais:** a camada de configuração é separada do código-fonte por design. Rotação de credenciais e auditoria de acesso não exigem alteração de lógica de negócio.
 
-**Superfície de ataque reduzida** — sem servidor web exposto, sem banco remoto, sem dependência de SaaS para funcionalidade core. O vetor de ataque externo é limitado às chamadas deliberadas às APIs de integração.
+**Superfície de ataque reduzida:** sem servidor web exposto, sem banco remoto, sem dependência de SaaS para funcionalidade core. O vetor de ataque externo é limitado às chamadas deliberadas às APIs de integração.
 
 ### Estrutura do projeto
 
 ```
 nexus-closer/
-├── main_web.py                    entrypoint principal e bridge Python ↔ JS
+├── main_web.py                    entrypoint principal e bridge Python / JS
 ├── src/
 │   ├── constants.py               preços, estágios e thresholds de urgência
-│   ├── models.py                  DTOs e dataclasses (únicos)
+│   ├── models.py                  DTOs e dataclasses
 │   └── services/
 │       ├── database_manager.py    único ponto de acesso ao SQLite
 │       ├── clickup_service.py     integração ClickUp API
@@ -97,11 +97,9 @@ nexus-closer/
 
 ## Acesso e Demonstração
 
-Este é um software proprietário. O código-fonte está disponível neste repositório exclusivamente para auditoria técnica e avaliação de competência em engenharia de software.
+O código-fonte deste repositório está disponível para auditoria técnica e avaliação de portfólio. O sistema opera em ambiente comercial ativo; o procedimento de configuração e as credenciais de integração não são divulgados publicamente.
 
-O guia de setup local é omitido por design: o sistema depende de integrações críticas com infraestrutura comercial em produção, e a exposição do procedimento de configuração não agrega valor técnico à leitura do código.
-
-Para visualizar o sistema em operação ou solicitar uma análise aprofundada da arquitetura, entre em contato via [LinkedIn](https://linkedin.com/in/fernanda-mp4) ou abra uma Discussion neste repositório.
+Para uma demonstração ao vivo ou para discutir a arquitetura em profundidade, entre em contato via [LinkedIn](https://linkedin.com/in/fernanda-mp4) ou abra uma Discussion neste repositório.
 
 ---
 
