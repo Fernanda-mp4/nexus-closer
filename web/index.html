@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS CLOSER // TERMINAL</title>
+  <!-- client_config.js DEVE ser carregado primeiro — fonte única de identidade white-label -->
+  <script src="client_config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- ═══════════════════════════════════════
+       MASTHEAD — IDENTIDADE + STATUS
+  ════════════════════════════════════════ -->
+  <div id="masthead">
+    <div id="masthead-logo">
+      <div class="logo-chip">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M11 9 L29 9 L31 11 L31 29 L29 31 L11 31 L9 29 L9 11 Z" stroke="#00FF41" stroke-width="1.5"/>
+          <rect x="13" y="13" width="14" height="14" stroke="#00FF41" stroke-width="0.4" opacity="0.3"/>
+          <line x1="15" y1="9" x2="15" y2="4" stroke="#00FF41" stroke-width="1"/>
+          <line x1="20" y1="9" x2="20" y2="4" stroke="#00FF41" stroke-width="1"/>
+          <line x1="25" y1="9" x2="25" y2="4" stroke="#00FF41" stroke-width="1"/>
+          <line x1="15" y1="31" x2="15" y2="36" stroke="#00FF41" stroke-width="1"/>
+          <line x1="20" y1="31" x2="20" y2="36" stroke="#00FF41" stroke-width="1"/>
+          <line x1="25" y1="31" x2="25" y2="36" stroke="#00FF41" stroke-width="1"/>
+          <line x1="9" y1="15" x2="4" y2="15" stroke="#00FF41" stroke-width="1"/>
+          <line x1="9" y1="20" x2="4" y2="20" stroke="#00FF41" stroke-width="1"/>
+          <line x1="9" y1="25" x2="4" y2="25" stroke="#00FF41" stroke-width="1"/>
+          <line x1="31" y1="15" x2="36" y2="15" stroke="#00FF41" stroke-width="1"/>
+          <line x1="31" y1="20" x2="36" y2="20" stroke="#00FF41" stroke-width="1"/>
+          <line x1="31" y1="25" x2="36" y2="25" stroke="#00FF41" stroke-width="1"/>
+          <rect x="13.5" y="3" width="3" height="1.5" fill="#00FF41" opacity="0.8"/>
+          <rect x="18.5" y="3" width="3" height="1.5" fill="#00FF41" opacity="0.8"/>
+          <rect x="23.5" y="3" width="3" height="1.5" fill="#00FF41" opacity="0.8"/>
+          <rect x="13.5" y="35.5" width="3" height="1.5" fill="#00FF41" opacity="0.8"/>
+          <rect x="18.5" y="35.5" width="3" height="1.5" fill="#00FF41" opacity="0.8"/>
+          <rect x="23.5" y="35.5" width="3" height="1.5" fill="#00FF41" opacity="0.8"/>
+          <rect x="3" y="13.5" width="1.5" height="3" fill="#00FF41" opacity="0.8"/>
+          <rect x="3" y="18.5" width="1.5" height="3" fill="#00FF41" opacity="0.8"/>
+          <rect x="3" y="23.5" width="1.5" height="3" fill="#00FF41" opacity="0.8"/>
+          <rect x="35.5" y="13.5" width="1.5" height="3" fill="#00FF41" opacity="0.8"/>
+          <rect x="35.5" y="18.5" width="1.5" height="3" fill="#00FF41" opacity="0.8"/>
+          <rect x="35.5" y="23.5" width="1.5" height="3" fill="#00FF41" opacity="0.8"/>
+          <polyline points="13,16 15,16 15,14 17,14" stroke="#00FF41" stroke-width="0.4" opacity="0.45" fill="none"/>
+          <polyline points="27,24 25,24 25,26 23,26" stroke="#00FF41" stroke-width="0.4" opacity="0.45" fill="none"/>
+          <circle cx="15" cy="16" r="0.7" fill="#00FF41" opacity="0.45"/>
+          <circle cx="25" cy="24" r="0.7" fill="#00FF41" opacity="0.45"/>
+          <path d="M14 20 Q20 14 26 20" stroke="#00FF41" stroke-width="1"/>
+          <path d="M14 20 Q20 26 26 20" stroke="#00FF41" stroke-width="1"/>
+          <circle cx="20" cy="20" r="4" stroke="#00FF41" stroke-width="0.7"/>
+          <line x1="20" y1="16.2" x2="20" y2="17.4" stroke="#00FF41" stroke-width="0.4" opacity="0.6"/>
+          <line x1="20" y1="22.6" x2="20" y2="23.8" stroke="#00FF41" stroke-width="0.4" opacity="0.6"/>
+          <line x1="16.2" y1="20" x2="17.4" y2="20" stroke="#00FF41" stroke-width="0.4" opacity="0.6"/>
+          <line x1="22.6" y1="20" x2="23.8" y2="20" stroke="#00FF41" stroke-width="0.4" opacity="0.6"/>
+          <circle cx="20" cy="20" r="1.8" fill="#00FF41"/>
+          <circle cx="18.8" cy="18.8" r="0.7" fill="#00FF41" opacity="0.35"/>
+          <path d="M11 10.5 L12.5 10.5 L12.5 9" stroke="#00FF41" stroke-width="0.5" opacity="0.55" fill="none"/>
+          <path d="M29 10.5 L27.5 10.5 L27.5 9" stroke="#00FF41" stroke-width="0.5" opacity="0.55" fill="none"/>
+          <path d="M11 29.5 L12.5 29.5 L12.5 31" stroke="#00FF41" stroke-width="0.5" opacity="0.55" fill="none"/>
+          <path d="M29 29.5 L27.5 29.5 L27.5 31" stroke="#00FF41" stroke-width="0.5" opacity="0.55" fill="none"/>
+        </svg>
+      </div>
+      <div id="masthead-title">
+        <strong>NEXUS CLOSER</strong>
+        <small>// SISTEMA DE FECHAMENTO ELITE — V9</small>
+      </div>
+    </div>
+    <div id="masthead-status">
+      <span id="status-dot" title="ONLINE"></span>
+      <span id="status-label">ONLINE</span>
+      <span class="status-sep">//</span>
+      <span id="last-log-strip">AGUARDANDO BRIDGE...</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       MAIN AREA — CSS GRID 3-ZONAS PERSISTENTES
+       [RADAR | PIPELINE | HUD]
+  ════════════════════════════════════════ -->
+  <div id="main-area">
+
+    <!-- ── ZONA RADAR (esquerda, 220px) ─────────────────────── -->
+    <div id="zone-radar">
+      <div class="zone-header">
+        <span class="zone-label">[*] RADAR GERAL</span>
+        <button class="btn-neon" id="btn-sync">↻ SYNC</button>
+      </div>
+
+      <div id="radar-wrap">
+        <svg id="radar-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Gradiente do sweep (comet trail) -->
+            <radialGradient id="sweep-fade" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00FF41" stop-opacity="0.0"/>
+              <stop offset="100%" stop-color="#00FF41" stop-opacity="0.0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Concentric rings -->
+          <circle cx="100" cy="100" r="20" stroke="#00FF41" stroke-width="0.6" fill="none" opacity="0.35"/>
+          <circle cx="100" cy="100" r="40" stroke="#00FF41" stroke-width="0.5" fill="none" opacity="0.28"/>
+          <circle cx="100" cy="100" r="60" stroke="#00FF41" stroke-width="0.5" fill="none" opacity="0.20"/>
+          <circle cx="100" cy="100" r="80" stroke="#00FF41" stroke-width="0.4" fill="none" opacity="0.14"/>
+
+          <!-- Cross-hairs -->
+          <line x1="100" y1="16" x2="100" y2="184" stroke="#00FF41" stroke-width="0.3" opacity="0.14"/>
+          <line x1="16"  y1="100" x2="184" y2="100" stroke="#00FF41" stroke-width="0.3" opacity="0.14"/>
+
+          <!-- Zone labels (inner=crítico, outer=saudável) -->
+          <text x="104" y="82" font-size="5" fill="#00FF41" opacity="0.35" font-family="monospace">&gt;30d</text>
+          <text x="104" y="62" font-size="5" fill="#FFAA00" opacity="0.35" font-family="monospace">7-30d</text>
+          <text x="104" y="42" font-size="5" fill="#00FF41" opacity="0.35" font-family="monospace">&lt;7d</text>
+
+          <!-- Sweep line — CSS animation via #radar-sweep -->
+          <line id="radar-sweep" x1="100" y1="100" x2="100" y2="20"
+                stroke="#00FF41" stroke-width="1.5" opacity="0.85"
+                stroke-linecap="round"/>
+
+          <!-- Sweep trail (sector ghost) -->
+          <path id="radar-trail"
+                d="M100,100 L100,20 A80,80 0 0,1 100,20 Z"
+                fill="#00FF41" opacity="0.04"/>
+
+          <!-- Dots layer — populado por JS (renderRadar) -->
+          <g id="radar-dots"></g>
+
+          <!-- Centro -->
+          <circle cx="100" cy="100" r="3" fill="#00FF41" opacity="0.6"/>
+          <circle cx="100" cy="100" r="1.5" fill="#00FF41"/>
+        </svg>
+      </div>
+
+      <!-- Legenda de urgência -->
+      <div class="radar-legend">
+        <span><span class="legend-dot green"></span>&lt;7d</span>
+        <span><span class="legend-dot amber"></span>7-15d</span>
+        <span><span class="legend-dot red"></span>&gt;15d</span>
+      </div>
+
+      <!-- Warning banner compacto -->
+      <div class="radar-warning">
+        ⚠ ID LEAD = ID BOTCONVERSA
+      </div>
+    </div>
+
+    <!-- ── ZONA PIPELINE (centro, flex-grow) ─────────────────── -->
+    <div id="zone-pipeline">
+
+      <!-- Spine SVG bio-mecânico (decoração, pointer-events: none) -->
+      <svg id="spine-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M8,0 C28,200 -8,400 8,600 C28,800 -8,1000 8,1200 C28,1400 -8,1600 8,1800"
+              stroke="#00FF41" stroke-width="1" fill="none"/>
+        <!-- Vértebras -->
+        <circle cx="8" cy="150" r="3" fill="none" stroke="#00FF41" stroke-width="0.6" opacity="0.5"/>
+        <circle cx="8" cy="350" r="3" fill="none" stroke="#00FF41" stroke-width="0.6" opacity="0.5"/>
+        <circle cx="8" cy="550" r="3" fill="none" stroke="#00FF41" stroke-width="0.6" opacity="0.5"/>
+        <circle cx="8" cy="750" r="3" fill="none" stroke="#00FF41" stroke-width="0.6" opacity="0.5"/>
+        <line x1="8" y1="150" x2="22" y2="150" stroke="#00FF41" stroke-width="0.4" opacity="0.3"/>
+        <line x1="8" y1="350" x2="22" y2="350" stroke="#00FF41" stroke-width="0.4" opacity="0.3"/>
+        <line x1="8" y1="550" x2="22" y2="550" stroke="#00FF41" stroke-width="0.4" opacity="0.3"/>
+        <line x1="8" y1="750" x2="22" y2="750" stroke="#00FF41" stroke-width="0.4" opacity="0.3"/>
+      </svg>
+
+      <!-- Assembler overlay (visível apenas durante processamento Python) -->
+      <pre id="assembler-overlay" aria-hidden="true">LDA #$00
+STA $0200
+JSR $FFD2
+BNE $02
+LDX #$FF
+TXS
+ROL $08
+ASL #$04
+CLC
+ADC #$A9
+STA $0201
+JSR $FFD2
+INX
+CPX #$10
+BNE $F2
+RTS</pre>
+
+      <!-- Pipeline top bar com navegação de overlays -->
+      <div id="pipeline-topbar">
+        <span class="zone-label">[*] PIPELINE // LEADS ATIVAS</span>
+        <nav id="overlay-nav" aria-label="Overlays táticos">
+          <button class="overlay-btn" data-overlay="orcamentos">[ORÇAMENTOS]</button>
+          <button class="overlay-btn" data-overlay="logs">[LOGS]</button>
+          <button class="overlay-btn" data-overlay="sistema">[SISTEMA]</button>
+          <button class="overlay-btn" data-overlay="master">[ELITE]</button>
+          <button class="overlay-btn pulse-nav-btn" id="btn-abrir-pulse">[⚡ PULSE]</button>
+        </nav>
+      </div>
+
+      <!-- Pipeline content (sempre visível) -->
+      <div id="tab-pipeline" class="zone-content">
+
+        <!-- Metric cards -->
+        <div class="cards-row">
+          <div class="metric-card" id="card-paradas">
+            <span class="metric-label">⚠ PARADAS +48H</span>
+            <span class="metric-val" id="val-paradas">—</span>
+            <div class="card-mini-list" id="mini-paradas"></div>
+          </div>
+          <div class="metric-card" id="card-qualificacao">
+            <span class="metric-label">EM QUALIFICAÇÃO</span>
+            <span class="metric-val" id="val-qualificacao">—</span>
+            <div class="card-context" id="ctx-qualificacao">enviar proposta agora</div>
+            <div class="card-mini-list" id="mini-qualificacao"></div>
+          </div>
+          <div class="metric-card" id="card-followup">
+            <span class="metric-label">EM FOLLOW-UP</span>
+            <span class="metric-val" id="val-followup">—</span>
+            <div class="card-context" id="ctx-followup">fechar agora</div>
+            <div class="card-mini-list" id="mini-followup"></div>
+          </div>
+          <div class="metric-card" id="card-acao">
+            <span class="metric-label">↯ AÇÃO IMEDIATA</span>
+            <span class="metric-val" id="val-acao">—</span>
+            <div class="card-mini-list" id="mini-acao"></div>
+          </div>
+        </div>
+
+        <!-- Leads table -->
+        <div class="glass-panel pipeline-table-panel">
+          <div class="table-wrap">
+            <table id="leads-table">
+              <thead>
+                <tr>
+                  <th>LEAD</th>
+                  <th>STATUS</th>
+                  <th>TEMPO PARADO</th>
+                  <th>PLANO</th>
+                  <th>MOTIVO</th>
+                  <th>AÇÃO</th>
+                </tr>
+              </thead>
+              <tbody id="leads-body">
+                <tr>
+                  <td colspan="6" class="empty-state">
+                    // AGUARDANDO SINCRONIZAÇÃO COM CLICKUP...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /tab-pipeline -->
+    </div><!-- /zone-pipeline -->
+
+    <!-- ── ZONA HUD (direita, 180px) ────────────────────────── -->
+    <div id="zone-hud">
+
+      <!-- FSS Score -->
+      <div class="hud-section">
+        <span class="hud-label">[*] FSS SCORE</span>
+        <span class="hud-value hud-fss" id="hud-fss-val">—/16</span>
+        <div class="hud-bar-wrap">
+          <div class="hud-bar" id="hud-fss-bar"></div>
+        </div>
+        <span class="hud-sublabel" id="hud-fss-nivel">AGUARDANDO</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <!-- Leads ativas -->
+      <div class="hud-section">
+        <span class="hud-label">[*] LEADS ATIVAS</span>
+        <span class="hud-value" id="hud-leads-count">—</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <!-- Próximo follow-up -->
+      <div class="hud-section">
+        <span class="hud-label">[*] PRÓX FOLLOW-UP</span>
+        <span class="hud-value hud-small" id="hud-next-followup">—</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <!-- Clock -->
+      <div class="hud-section">
+        <span class="hud-label">[*] HORA LOCAL</span>
+        <span class="hud-value hud-clock" id="hud-clock">--:--:--</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <!-- Status do sistema -->
+      <div class="hud-section">
+        <span class="hud-label">[*] SISTEMA</span>
+        <span class="hud-value hud-small" id="hud-sys-status" style="color:var(--neon);">ONLINE</span>
+      </div>
+
+      <!-- Estado do Pipeline movido para overlay ELITE -->
+
+    </div><!-- /zone-hud -->
+
+  </div><!-- /main-area -->
+
+</div><!-- /app -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     OVERLAYS TÁTICOS — slide-in da direita, z-index: 200
+     NÃO substituem o conteúdo — abrem sobre o layout
+════════════════════════════════════════════════════════════════ -->
+
+<!-- OVERLAY: ORÇAMENTOS -->
+<div id="overlay-orcamentos" class="overlay-panel" role="dialog" aria-label="Orçamentos">
+  <div class="overlay-inner">
+    <div class="overlay-header">
+      <span class="overlay-title">◈ CALCULADORA DE ORÇAMENTO</span>
+      <button class="overlay-close" data-overlay="orcamentos">✕</button>
+    </div>
+    <!-- Equations overlay decorativo (dentro do painel de orçamentos) -->
+    <div id="equations-overlay" aria-hidden="true">
+      P(A|B) = P(B|A)·P(A) / P(B)
+      Σ(xᵢ−μ)² / n = σ²
+      λe⁻ˡˣ · H(x) ≥ 0
+      ∇²φ = ρ/ε₀
+      E[X] = ∫x·f(x)dx
+    </div>
+    <div class="overlay-content">
+      <div class="glass-panel">
+        <div class="divider"></div>
+        <p style="font-size:9px;color:#FF6B35;margin-bottom:14px;">
+          REGRA: PRAZO &lt; 10 DIAS EXIGE AUTORIZAÇÃO DO REDATOR-CHEFE / SETOR DE ORÇAMENTOS
+        </p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">TÍTULO / LEAD</label>
+            <div class="input-row">
+              <select id="select-titulo" class="input-neon" style="width:70px;flex-shrink:0;margin-bottom:0;padding-right:24px;">
+                <option value="Dra.">Dra.</option>
+                <option value="Dr.">Dr.</option>
+              </select>
+              <input type="text" id="input-lead" class="input-neon" placeholder="nome completo da lead..." />
+              <button class="btn-paste" id="btn-paste-lead" title="Colar da área de transferência">📋</button>
+            </div>
+            <span class="field-warning">⚠ O nome deve estar IDÊNTICO ao registrado no Pipeline do ClickUp.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">TIPO</label>
+            <select id="select-tipo" class="input-neon">
+              <option value="A">A — TCC / Mono / Diss / Tese</option>
+              <option value="B">B — Pré-Projeto / Pré-Projeto + TCC</option>
+              <option value="C">C — Revisão Ortográfica / Crítica</option>
+              <option value="D">D — Demanda Específica</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">NÍVEL</label>
+            <select id="select-nivel" class="input-neon">
+              <option value="Graduação/Pós">Graduação / Pós</option>
+              <option value="Mestrado">Mestrado</option>
+              <option value="Doutorado">Doutorado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">PLANO</label>
+            <select id="select-plano" class="input-neon">
+              <option value="Essencial">Essencial  (−R$ 100)</option>
+              <option value="Full" selected>Full  (base)</option>
+              <option value="Master">Master  (+R$ 250)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label class="form-label">PÁGINAS</label>
+            <input type="number" id="input-paginas" class="input-neon" value="10" min="1" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">PRAZO</label>
+            <select id="select-prazo" class="input-neon">
+              <option value="Baixa (20d)">Baixa — 20d</option>
+              <option value="Normal (15d)" selected>Normal — 15d (+20%)</option>
+              <option value="Alta (12d)">Alta — 12d (+35%)</option>
+              <option value="Urgente (10d)">Urgente — 10d (+50%)</option>
+              <option value="Crítico (&lt;10d)">Crítico — &lt;10d ⚠</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">DESCONTO (R$)</label>
+            <input type="number" id="input-desconto" class="input-neon" value="0" min="0" step="10" />
+          </div>
+        </div>
+
+        <button class="btn-neon" id="btn-calcular" style="width:100%;margin-bottom:4px;">
+          ⚡ CALCULAR PROPOSTA
+        </button>
+        <div class="divider" style="margin-top:10px;"></div>
+
+        <p class="empty-state" id="resultado-placeholder" style="padding:20px 0 4px;">
+          // RESULTADO APARECERÁ AQUI
+        </p>
+        <div id="resultado-wrap" style="display:none;">
+          <div class="resultado-header">
+            <span class="panel-title" style="margin-bottom:0;">◈ PROPOSTA GERADA</span>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-neon" id="btn-copiar">📋 COPIAR</button>
+              <button class="btn-neon" id="btn-pdf">⬇ BAIXAR PDF</button>
+            </div>
+          </div>
+          <pre id="resultado-proposta" class="proposta-output"></pre>
+        </div>
+
+        <!-- Scripts pós-envio — visível após calcular proposta -->
+        <div id="scripts-pos-envio" style="display:none;">
+          <div class="divider" style="margin:16px 0 10px;"></div>
+          <div class="resultado-header" style="margin-bottom:10px;">
+            <span class="panel-title" style="margin-bottom:0;">◈ SCRIPTS PÓS-ENVIO</span>
+          </div>
+          <div class="script-bloco">
+            <div class="script-bloco-label">/// TEXTO PRINCIPAL</div>
+            <pre id="script-texto-principal" class="plano-script"></pre>
+            <button class="btn-neon btn-copy-script" data-target="script-texto-principal">📋 COPIAR</button>
+          </div>
+          <div class="script-bloco">
+            <div class="script-bloco-label">🎙 ÁUDIO</div>
+            <pre id="script-audio" class="plano-script"></pre>
+            <button class="btn-neon btn-copy-script" data-target="script-audio">📋 COPIAR</button>
+          </div>
+          <div class="script-bloco">
+            <div class="script-bloco-label">💳 PAGAMENTO VIA PIX</div>
+            <pre id="script-pagamento" class="plano-script"></pre>
+            <button class="btn-neon btn-copy-script" data-target="script-pagamento">📋 COPIAR</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: LOGS -->
+<div id="overlay-logs" class="overlay-panel" role="dialog" aria-label="Logs do sistema">
+  <div class="overlay-inner">
+    <div class="overlay-header">
+      <span class="overlay-title">▸ TERMINAL DE LOGS</span>
+      <button class="overlay-close" data-overlay="logs">✕</button>
+    </div>
+    <div class="overlay-content logs-layout">
+      <div class="glass-panel logs-panel">
+        <div class="divider"></div>
+        <div id="terminal-log-full">
+          <span class="log-line">[SYS] NEXUS CLOSER V9 — BIOMECHANICAL NEON-CRT</span>
+          <span class="log-line">[SYS] BRIDGE PYWEBVIEW — INICIALIZANDO...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: SISTEMA -->
+<div id="overlay-sistema" class="overlay-panel" role="dialog" aria-label="Configurações do sistema">
+  <div class="overlay-inner">
+    <div class="overlay-header">
+      <span class="overlay-title">⬟ CONFIGURAÇÕES DO SISTEMA</span>
+      <button class="overlay-close" data-overlay="sistema">✕</button>
+    </div>
+    <div class="overlay-content">
+      <div class="glass-panel">
+        <div class="divider"></div>
+        <p class="empty-state" style="padding:20px 0 4px;">// EM BREVE</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: ELITE — FSS SCORE -->
+<div id="overlay-master" class="overlay-panel" role="dialog" aria-label="Elite — FSS">
+  <div class="overlay-inner">
+    <div class="overlay-header">
+      <span class="overlay-title">★ ELITE — FSS SCORE</span>
+      <button id="btn-refresh-elite" class="btn-dim" style="font-size:9px;padding:3px 10px;margin-right:8px;">↻ ATUALIZAR</button>
+      <button class="overlay-close" data-overlay="master">✕</button>
+    </div>
+    <div class="overlay-content" id="elite-content">
+
+      <!-- TOPO: Score + Perfil + Bonus Calculator -->
+      <div class="elite-top-grid">
+
+        <!-- Score Semanal -->
+        <div class="glass-panel elite-card">
+          <div class="elite-card-hdr"><span class="elite-card-title">[*] SCORE SEMANAL</span></div>
+          <div class="elite-card-body elite-score-body">
+            <div class="elite-score-display">
+              <input type="number" id="elite-score-input" class="elite-score-input"
+                     min="1" max="16" value="1" aria-label="Score FSS atual">
+              <span class="elite-score-sep">/16</span>
+            </div>
+            <div class="elite-bar-wrap">
+              <div class="elite-bar" id="elite-score-bar"></div>
+            </div>
+            <div class="elite-perfil-tag" id="elite-perfil">DESORGANIZADO</div>
+            <div class="elite-scale-guide">
+              <span class="elite-scale-item dim">1–7 · 0% bônus</span>
+              <span class="elite-scale-item amber">10 · 50%</span>
+              <span class="elite-scale-item neon">12 · 100%</span>
+              <span class="elite-scale-item elite">16 · +2% comissão</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculadora de Bônus -->
+        <div class="glass-panel elite-card">
+          <div class="elite-card-hdr"><span class="elite-card-title">[*] IMPACTO FINANCEIRO</span></div>
+          <div class="elite-card-body">
+            <div class="elite-fin-input-row">
+              <!-- Valores do ClickUp (somente leitura) -->
+              <div class="elite-ck-row">
+                <span class="elite-fin-label dim-text">[ ClickUp ] Orçamentos em aberto</span>
+                <span class="elite-fin-val amber-text" id="elite-ck-orcamentos">—</span>
+              </div>
+              <div class="elite-ck-row">
+                <span class="elite-fin-label dim-text">[ ClickUp ] Contratos fechados</span>
+                <span class="elite-fin-val neon-text" id="elite-ck-contratos">—</span>
+              </div>
+              <div class="elite-divider"></div>
+              <label class="elite-fin-label" for="elite-fat-input">FAT. BRUTO — calculadora de bônus</label>
+              <input type="number" id="elite-fat-input" class="elite-fin-input"
+                     placeholder="0" min="0" step="100" aria-label="Faturamento bruto para cálculo de bônus">
+            </div>
+            <div class="elite-divider"></div>
+            <div class="elite-fin-row">
+              <span class="elite-fin-label">Comissão base (8%)</span>
+              <span class="elite-fin-val neon-text" id="elite-comissao-base">R$ —</span>
+            </div>
+            <div class="elite-fin-row">
+              <span class="elite-fin-label">Bônus da faixa</span>
+              <span class="elite-fin-val amber-text" id="elite-bonus-val">R$ —</span>
+            </div>
+            <div class="elite-fin-row elite-fin-plus" id="elite-plus-row" style="display:none">
+              <span class="elite-fin-label">Plus Elite (+2%)</span>
+              <span class="elite-fin-val elite-text" id="elite-plus-val">R$ —</span>
+            </div>
+            <div class="elite-divider"></div>
+            <div class="elite-fin-row elite-total-row">
+              <span class="elite-fin-label-big">TOTAL ESTIMADO</span>
+              <span class="elite-fin-total" id="elite-total">R$ —</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Os 4 Pilares -->
+        <div class="glass-panel elite-card">
+          <div class="elite-card-hdr"><span class="elite-card-title">[*] PILARES FSS</span></div>
+          <div class="elite-card-body">
+            <p class="elite-pilar-note">Avaliação semanal — 1 a 4 por pilar → meta: 16/16 → bônus máximo</p>
+            <div class="elite-pilar-row">
+              <span class="elite-pilar-name">PIPELINE</span>
+              <div class="elite-pilar-stars" data-pilar="crm"></div>
+              <span class="elite-pilar-desc" id="pdesc-crm">—</span>
+            </div>
+            <div class="elite-pilar-row">
+              <span class="elite-pilar-name">FOLLOW-UP</span>
+              <div class="elite-pilar-stars" data-pilar="fu"></div>
+              <span class="elite-pilar-desc" id="pdesc-fu">—</span>
+            </div>
+            <div class="elite-pilar-row">
+              <span class="elite-pilar-name">ATENDIMENTO</span>
+              <div class="elite-pilar-stars" data-pilar="atend"></div>
+              <span class="elite-pilar-desc" id="pdesc-atend">—</span>
+            </div>
+            <div class="elite-pilar-row">
+              <span class="elite-pilar-name">ORGANIZAÇÃO</span>
+              <div class="elite-pilar-stars" data-pilar="det"></div>
+              <span class="elite-pilar-desc" id="pdesc-det">—</span>
+            </div>
+            <div class="elite-pilar-sum">
+              Soma: <span id="elite-pilar-total">—</span>/16
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /elite-top-grid -->
+
+      <!-- MEIO: Indicadores CRM automáticos -->
+      <div class="elite-mid-grid">
+
+        <div class="glass-panel elite-card">
+          <div class="elite-card-hdr"><span class="elite-card-title">[*] INDICADORES — dados do ClickUp</span>
+            <span class="elite-card-subtitle">dados do ClickUp</span></div>
+          <div class="elite-card-body">
+            <div class="elite-ind-row">
+              <span class="elite-ind-label">Pipeline atualizado</span>
+              <div class="elite-ind-bar-wrap"><div class="elite-ind-bar" id="ind-bar-crm"></div></div>
+              <span class="elite-ind-pct" id="ind-pct-crm">—%</span>
+            </div>
+            <div class="elite-ind-row">
+              <span class="elite-ind-label">Follow-up ativo</span>
+              <div class="elite-ind-bar-wrap"><div class="elite-ind-bar" id="ind-bar-fu"></div></div>
+              <span class="elite-ind-pct" id="ind-pct-fu">—%</span>
+            </div>
+            <div class="elite-ind-row">
+              <span class="elite-ind-label">Resposta &lt; 48h</span>
+              <div class="elite-ind-bar-wrap"><div class="elite-ind-bar" id="ind-bar-atend"></div></div>
+              <span class="elite-ind-pct" id="ind-pct-atend">—%</span>
+            </div>
+            <div class="elite-ind-row">
+              <span class="elite-ind-label">Organização ok</span>
+              <div class="elite-ind-bar-wrap"><div class="elite-ind-bar" id="ind-bar-det"></div></div>
+              <span class="elite-ind-pct" id="ind-pct-det">—%</span>
+            </div>
+            <div class="elite-leads-info">
+              <span id="elite-leads-closer">— leads do closer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel elite-card">
+          <div class="elite-card-hdr"><span class="elite-card-title">[*] PLANO DE AÇÃO — ELITE</span></div>
+          <div class="elite-card-body">
+            <div id="elite-acoes" class="elite-acoes-list">
+              <span class="empty-state">↻ Atualize para ver o plano de ação</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel elite-card elite-card-pipeline">
+          <div class="elite-card-hdr"><span class="elite-card-title">[*] PIPELINE HEALTH</span></div>
+          <div class="elite-card-body">
+            <div class="elite-stat-row">
+              <span class="elite-stat-label">TOTAL ATIVAS</span>
+              <span class="elite-stat-val neon-text" id="elite-total-ativas">—</span>
+            </div>
+            <div class="elite-stat-row">
+              <span class="elite-stat-label">DADOS OK</span>
+              <span class="elite-stat-val neon-text" id="hud-pct-ok">—</span>
+            </div>
+            <div class="elite-stat-row">
+              <span class="elite-stat-label amber-text">GARGALOS (&gt;5d)</span>
+              <span class="elite-stat-val amber-text" id="hud-gargalos">—</span>
+            </div>
+            <div class="elite-stat-row">
+              <span class="elite-stat-label danger-text">ZOMBIES (&gt;30d)</span>
+              <span class="elite-stat-val danger-text" id="hud-zombies">—</span>
+            </div>
+            <div class="elite-divider"></div>
+            <div class="elite-sub-title">>>> POR ESTÁGIO</div>
+            <div id="elite-por-estagio"><!-- JS --></div>
+            <div class="elite-divider"></div>
+            <button class="btn-neon elite-btn-auditoria" id="btn-forcar-auditoria">
+              ⚡ FORÇAR AUDITORIA
+            </button>
+            <span class="elite-pulse-ultimo" id="hud-pulse-ultimo">último: —</span>
+          </div>
+        </div>
+
+      </div><!-- /elite-mid-grid -->
+
+      <!-- RADAR FSS — só leads do closer atual -->
+      <div class="glass-panel elite-card elite-card-radar">
+        <div class="elite-card-hdr">
+          <span class="elite-card-title">[*] RADAR FSS — suas leads</span>
+          <span class="elite-card-subtitle">filtrado por closer</span>
+        </div>
+        <div class="elite-card-body elite-radar-body">
+          <svg id="elite-radar-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- rings -->
+            <circle cx="80" cy="80" r="62" fill="none" stroke="#00FF41" stroke-width="0.4" opacity="0.25"/>
+            <circle cx="80" cy="80" r="44" fill="none" stroke="#00FF41" stroke-width="0.4" opacity="0.2"/>
+            <circle cx="80" cy="80" r="26" fill="none" stroke="#FFAA00" stroke-width="0.4" opacity="0.2"/>
+            <circle cx="80" cy="80" r="10" fill="none" stroke="#FF3333" stroke-width="0.4" opacity="0.25"/>
+            <!-- crosshairs -->
+            <line x1="80" y1="18" x2="80" y2="142" stroke="#00FF41" stroke-width="0.3" opacity="0.15"/>
+            <line x1="18" y1="80" x2="142" y2="80" stroke="#00FF41" stroke-width="0.3" opacity="0.15"/>
+            <!-- sweep -->
+            <line id="elite-radar-sweep" x1="80" y1="80" x2="80" y2="18"
+                  stroke="#00FF41" stroke-width="1" opacity="0.55"
+                  style="transform-origin:80px 80px;animation:radarSweep 4s linear infinite;"/>
+            <!-- dots -->
+            <g id="elite-radar-dots"></g>
+          </svg>
+          <div class="elite-radar-legend">
+            <span class="elite-radar-leg ok-text">● EM DIA</span>
+            <span class="elite-radar-leg amber-text">● ATENÇÃO</span>
+            <span class="elite-radar-leg danger-text">● CRÍTICO</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /elite-content -->
+
+    <!-- Loading overlay -->
+    <div id="elite-loading" class="elite-loading">
+      <span class="elite-loading-txt">&gt;&gt;&gt; SINCRONIZANDO FSS...</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- Tooltip customizado do radar (JS-driven) -->
+<div id="radar-tooltip" aria-hidden="true"></div>
+
+<!-- Avisos táticos urgentes (centro de tela, âmbar) -->
+<div id="aviso-container">
+  <button id="aviso-dismiss-all" style="display:none">✕ FECHAR TODOS</button>
+  <div id="aviso-toasts"></div>
+</div>
+
+<!-- Notificações flutuantes (centro de tela) -->
+<div id="notif-container"></div>
+
+<!-- Eye Watermark — Vigilância CRT -->
+<div class="eye-watermark" aria-hidden="true">
+  <svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <path d="M5 40 Q70 4 135 40" stroke="#00FF41" stroke-width="1.2"/>
+    <path d="M5 40 Q70 76 135 40" stroke="#00FF41" stroke-width="1.2"/>
+    <line x1="5" y1="40" x2="5" y2="34" stroke="#00FF41" stroke-width="0.8"/>
+    <line x1="5" y1="40" x2="5" y2="46" stroke="#00FF41" stroke-width="0.8"/>
+    <line x1="135" y1="40" x2="135" y2="34" stroke="#00FF41" stroke-width="0.8"/>
+    <line x1="135" y1="40" x2="135" y2="46" stroke="#00FF41" stroke-width="0.8"/>
+    <circle cx="70" cy="40" r="24" stroke="#00FF41" stroke-width="1"/>
+    <circle cx="70" cy="40" r="18" stroke="#00FF41" stroke-width="0.6" opacity="0.7"/>
+    <line x1="70" y1="22" x2="70" y2="16" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="70" y1="58" x2="70" y2="64" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="46" y1="40" x2="40" y2="40" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="94" y1="40" x2="100" y2="40" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="53" y1="23" x2="49" y2="19" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="87" y1="23" x2="91" y2="19" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="53" y1="57" x2="49" y2="61" stroke="#00FF41" stroke-width="0.5"/>
+    <line x1="87" y1="57" x2="91" y2="61" stroke="#00FF41" stroke-width="0.5"/>
+    <circle cx="70" cy="40" r="11" fill="#00FF41" opacity="0.12"/>
+    <circle cx="70" cy="40" r="11" stroke="#00FF41" stroke-width="0.8"/>
+    <circle cx="70" cy="40" r="6" fill="#00FF41" opacity="0.45"/>
+    <circle cx="70" cy="40" r="3.5" fill="#00FF41" opacity="0.88"/>
+    <circle cx="64" cy="34" r="2.2" fill="#00FF41" opacity="0.85"/>
+    <circle cx="74" cy="37" r="1.1" fill="#00FF41" opacity="0.45"/>
+    <line x1="5" y1="40" x2="42" y2="40" stroke="#00FF41" stroke-width="0.4" stroke-dasharray="3,4" opacity="0.5"/>
+    <line x1="98" y1="40" x2="135" y2="40" stroke="#00FF41" stroke-width="0.4" stroke-dasharray="3,4" opacity="0.5"/>
+    <path d="M2 10 L2 2 L10 2" stroke="#00FF41" stroke-width="0.7" opacity="0.45"/>
+    <path d="M130 2 L138 2 L138 10" stroke="#00FF41" stroke-width="0.7" opacity="0.45"/>
+    <path d="M2 70 L2 78 L10 78" stroke="#00FF41" stroke-width="0.7" opacity="0.45"/>
+    <path d="M130 78 L138 78 L138 70" stroke="#00FF41" stroke-width="0.7" opacity="0.45"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PULSE PAGE — Relatório diário Battle Plan / Fechamento
+     Página completa, z-index 300, substitui visualmente o dashboard
+══════════════════════════════════════════════════════════════ -->
+<div id="pulse-page" class="pulse-page" role="main" aria-label="PULSE — Relatório Diário" style="display:none">
+
+  <!-- Cabeçalho profissional — visível APENAS no PDF (@media print) -->
+  <div class="pulse-pdf-header" id="pulse-pdf-header">
+
+    <div class="pulse-pdf-top-row">
+      <div class="pulse-pdf-badge" id="pdf-turno-badge">RELATÓRIO</div>
+      <div class="pulse-pdf-ref">
+        <span class="pulse-pdf-ref-lbl">Emitido em:</span>
+        <span class="pulse-pdf-ref-val" id="pdf-data-hora-full">—</span>
+      </div>
+    </div>
+
+    <div class="pulse-pdf-title">RELATÓRIO DIÁRIO DE PERFORMANCE DE VENDAS</div>
+    <div class="pulse-pdf-subtitulo" id="pdf-subtitulo">—</div>
+
+    <div class="pulse-pdf-divider-thick"></div>
+
+    <table class="pulse-pdf-info-table">
+      <tr>
+        <td class="pulse-pdf-info-lbl">Vendedor(a)</td>
+        <td class="pulse-pdf-info-val" id="pdf-vendor-nome">[NOME DO CLOSER]</td>
+        <td class="pulse-pdf-info-lbl">Cargo</td>
+        <td class="pulse-pdf-info-val" id="pdf-vendor-cargo">[CARGO]</td>
+      </tr>
+      <tr>
+        <td class="pulse-pdf-info-lbl">Empresa</td>
+        <td class="pulse-pdf-info-val" id="pulse-pdf-empresa">[EMPRESA]</td>
+        <td class="pulse-pdf-info-lbl">Contato</td>
+        <td class="pulse-pdf-info-val" id="pulse-pdf-contato">[CONTATO]</td>
+      </tr>
+      <tr>
+        <td class="pulse-pdf-info-lbl">Turno</td>
+        <td class="pulse-pdf-info-val" id="pdf-turno">—</td>
+        <td class="pulse-pdf-info-lbl">Data</td>
+        <td class="pulse-pdf-info-val" id="pdf-data">—</td>
+      </tr>
+      <tr>
+        <td class="pulse-pdf-info-lbl">Horário de geração</td>
+        <td class="pulse-pdf-info-val" id="pdf-hora">—</td>
+        <td class="pulse-pdf-info-lbl">Cidade</td>
+        <td class="pulse-pdf-info-val">Rio de Janeiro — RJ</td>
+      </tr>
+    </table>
+
+    <div class="pulse-pdf-divider"></div>
+
+    <div class="pulse-pdf-objetivo">
+      <strong>Objetivo do relatório:</strong>
+      Este documento registra a atividade operacional de vendas do turno indicado,
+      incluindo o status de cada lead ativa no pipeline, ações de follow-up executadas,
+      pendências identificadas e resumo de performance. Gerado automaticamente pelo
+      sistema NEXUS CLOSER com base nos dados sincronizados do ClickUp.
+    </div>
+
+    <div class="pulse-pdf-divider-thick"></div>
+  </div>
+
+  <!-- Header fixo — compartilhado entre lista e detalhe -->
+  <header class="pulse-hdr">
+    <div class="pulse-hdr-left">
+      <span class="pulse-logo">NEXUS CLOSER</span>
+      <span class="pulse-sep">//</span>
+      <span class="pulse-tipo" id="pulse-tipo-label">PULSE REPORTS</span>
+    </div>
+    <div class="pulse-hdr-center">
+      <span class="pulse-datetime" id="pulse-datetime"></span>
+    </div>
+    <div class="pulse-hdr-right">
+      <button class="pulse-btn pulse-btn-secondary" id="btn-pulse-novo">⚡ GERAR AGORA</button>
+      <button class="pulse-btn pulse-btn-dim" id="btn-pulse-historico" title="Semear relatórios desta semana">⏳ SEMANA</button>
+      <button class="pulse-btn pulse-btn-export" id="btn-pulse-pdf" style="display:none">⬇ EXPORTAR PDF</button>
+      <button class="pulse-btn pulse-btn-back" id="btn-pulse-fechar">← FECHAR</button>
+    </div>
+  </header>
+
+  <!-- ── VIEW 1: Lista de relatórios ── -->
+  <div id="pulse-view-list" class="pulse-body">
+    <div class="pulse-loading" id="pulse-list-loading">
+      <span class="pulse-loading-icon">⟳</span>
+      <span>CARREGANDO HISTÓRICO...</span>
+    </div>
+    <div id="pulse-reports-list" class="pulse-reports-list" style="display:none"></div>
+  </div>
+
+  <!-- ── VIEW 2: Detalhe de um relatório ── -->
+  <div id="pulse-view-detail" style="display:none; flex-direction:column; flex:1; overflow:hidden">
+
+    <!-- Sub-header do detalhe -->
+    <div class="pulse-detail-subhdr">
+      <button class="pulse-back-btn" id="btn-pulse-back-list">← VOLTAR AOS RELATÓRIOS</button>
+      <div class="pulse-stats-bar" id="pulse-stats-bar">
+        <div class="pulse-stat">
+          <span class="pulse-stat-val" id="pstat-total">—</span>
+          <span class="pulse-stat-lbl">LEADS ATIVAS</span>
+        </div>
+        <div class="pulse-stat pulse-stat-danger">
+          <span class="pulse-stat-val" id="pstat-critico">—</span>
+          <span class="pulse-stat-lbl">CRÍTICAS</span>
+        </div>
+        <div class="pulse-stat pulse-stat-amber">
+          <span class="pulse-stat-val" id="pstat-atencao">—</span>
+          <span class="pulse-stat-lbl">ATENÇÃO</span>
+        </div>
+        <div class="pulse-stat pulse-stat-neon">
+          <span class="pulse-stat-val" id="pstat-normal">—</span>
+          <span class="pulse-stat-lbl">SAUDÁVEIS</span>
+        </div>
+        <div class="pulse-stat pulse-stat-dim">
+          <span class="pulse-stat-val" id="pstat-sem-estagio">—</span>
+          <span class="pulse-stat-lbl">SEM ESTÁGIO</span>
+        </div>
+        <div class="pulse-stat">
+          <span class="pulse-stat-val" id="pstat-pct">—%</span>
+          <span class="pulse-stat-lbl">PIPELINE OK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corpo scrollável do detalhe -->
+    <div class="pulse-body" id="pulse-detail-body">
+      <div class="pulse-loading" id="pulse-detail-loading" style="display:none">
+        <span class="pulse-loading-icon">⟳</span>
+        <span>CARREGANDO RELATÓRIO...</span>
+      </div>
+      <div id="pulse-content">
+
+        <!-- INTRODUÇÃO -->
+        <section class="pulse-section pulse-sec-intro" id="pulse-sec-intro">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag intro-tag">■ INTRODUÇÃO</span>
+          </div>
+          <div class="pulse-intro-text" id="pulse-intro-text">—</div>
+        </section>
+
+        <!-- PLANO DE AÇÃO (Battle Plan 07h) -->
+        <section class="pulse-section pulse-sec-plano" id="pulse-sec-plano" style="display:none">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag plano-tag">⚡ PLANO DE AÇÃO</span>
+            <span class="pulse-sec-desc">Prioridade: último para o primeiro — execute em ordem</span>
+          </div>
+          <div class="pulse-plano-list" id="pulse-list-plano"></div>
+        </section>
+
+        <!-- CRÍTICO -->
+        <section class="pulse-section pulse-sec-critico" id="pulse-sec-critico">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag critico-tag">■ CRÍTICO</span>
+            <span class="pulse-sec-count" id="pulse-count-critico">0</span>
+            <span class="pulse-sec-desc">Leads fora do limite — ação imediata</span>
+          </div>
+          <div class="pulse-leads-list" id="pulse-list-critico"></div>
+        </section>
+
+        <!-- ATENÇÃO -->
+        <section class="pulse-section pulse-sec-atencao" id="pulse-sec-atencao">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag atencao-tag">■ ATENÇÃO</span>
+            <span class="pulse-sec-count" id="pulse-count-atencao">0</span>
+            <span class="pulse-sec-desc">Threshold âmbar atingido — monitorar</span>
+          </div>
+          <div class="pulse-leads-list" id="pulse-list-atencao"></div>
+        </section>
+
+        <!-- NORMAL -->
+        <section class="pulse-section pulse-sec-normal" id="pulse-sec-normal">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag normal-tag">■ NORMAL</span>
+            <span class="pulse-sec-count" id="pulse-count-normal">0</span>
+            <span class="pulse-sec-desc">Dentro do prazo — manter cadência</span>
+          </div>
+          <div class="pulse-leads-list" id="pulse-list-normal"></div>
+        </section>
+
+        <!-- SEM ESTÁGIO -->
+        <section class="pulse-section pulse-sec-sem-estagio" id="pulse-sec-sem-estagio">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag sem-estagio-tag">■ SEM ESTÁGIO</span>
+            <span class="pulse-sec-count" id="pulse-count-sem-estagio">0</span>
+            <span class="pulse-sec-desc">Estágio não definido — atualizar no ClickUp</span>
+          </div>
+          <div class="pulse-leads-list" id="pulse-list-sem-estagio"></div>
+        </section>
+
+        <!-- FOLLOW-UPS -->
+        <section class="pulse-section pulse-sec-followups" id="pulse-sec-followups">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag followup-tag">■ FOLLOW-UPS ATIVOS</span>
+            <span class="pulse-sec-count" id="pulse-count-fu">0</span>
+            <span class="pulse-sec-desc">Sequência 60d — executar</span>
+          </div>
+          <div class="pulse-leads-list" id="pulse-list-fu"></div>
+        </section>
+
+        <!-- CONCLUÍDO HOJE (Fechamento) -->
+        <section class="pulse-section pulse-sec-feito" id="pulse-sec-feito">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag feito-tag">■ CONCLUÍDO</span>
+            <span class="pulse-sec-count" id="pulse-count-feito">0</span>
+            <span class="pulse-sec-desc">Leads atualizadas no ClickUp neste turno</span>
+          </div>
+          <div class="pulse-leads-list" id="pulse-list-feito"></div>
+        </section>
+
+        <!-- PENDÊNCIAS -->
+        <section class="pulse-section pulse-sec-pendente" id="pulse-sec-pendente">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag pendente-tag">■ PENDÊNCIAS</span>
+            <span class="pulse-sec-desc">O que ainda precisa ser feito</span>
+          </div>
+          <div class="pulse-pendente-list" id="pulse-list-pendente"></div>
+        </section>
+
+        <!-- CHECKLIST DO DIA (Fechamento 19h) -->
+        <section class="pulse-section pulse-sec-checklist" id="pulse-sec-checklist" style="display:none">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag checklist-tag">■ CHECKLIST DO DIA</span>
+            <span class="pulse-sec-desc">Resolvido vs pendente</span>
+          </div>
+          <div class="pulse-checklist-list" id="pulse-list-checklist"></div>
+        </section>
+
+        <!-- ANÁLISE DE DESEMPENHO (Fechamento 19h) -->
+        <section class="pulse-section pulse-sec-analise" id="pulse-sec-analise" style="display:none">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag analise-tag">■ ANÁLISE DE DESEMPENHO</span>
+          </div>
+          <div class="pulse-analise-body" id="pulse-analise-body"></div>
+        </section>
+
+        <!-- DICAS DE ORGANIZAÇÃO (Fechamento 19h) -->
+        <section class="pulse-section pulse-sec-dicas" id="pulse-sec-dicas" style="display:none">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag dicas-tag">■ DICAS DE ORGANIZAÇÃO</span>
+          </div>
+          <div class="pulse-dicas-list" id="pulse-list-dicas"></div>
+        </section>
+
+        <!-- CONCLUSÃO (sempre) -->
+        <section class="pulse-section pulse-sec-conclusao" id="pulse-sec-conclusao">
+          <div class="pulse-sec-hdr">
+            <span class="pulse-sec-tag conclusao-tag">■ CONCLUSÃO</span>
+          </div>
+          <div class="pulse-conclusao-text" id="pulse-conclusao-text">—</div>
+        </section>
+
+      </div><!-- /pulse-content -->
+    </div><!-- /pulse-detail-body -->
+  </div><!-- /pulse-view-detail -->
+
+  <!-- Rodapé -->
+  <footer class="pulse-footer">
+    <span class="pulse-footer-txt">NEXUS CLOSER — PULSE SYSTEM</span>
+    <span class="pulse-footer-txt dim" id="pulse-footer-info">HISTÓRICO DE RELATÓRIOS</span>
+  </footer>
+
+</div><!-- /pulse-page -->
+
+<script src="app.js"></script>
+</body>
+</html>
